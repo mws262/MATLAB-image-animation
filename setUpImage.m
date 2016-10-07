@@ -8,6 +8,8 @@ function [ s, strans ] = setUpImage( imagePath, scaleFactor )
 %   OUT:
 %   s - surface to which the image is mapped
 %   strans - hgtransform object to which the surface is attached
+%   
+%   Matthew Sheen   
 %
 %   See also HGTRANSFORM, MAKEHGTFORM, SURF   
 
