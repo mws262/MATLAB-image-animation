@@ -5,13 +5,13 @@
 %  Matthew Sheen
 
 close all; clear all;
-
+addpath ../scripts
 
 %% High level quick settings
 
-showTransp = true; % Do transparencies?
-vidWrite = true; % Write to file?
-showVids = true; % Show video content within the scene, or just the keyframe.
+showTransp = false; % Do transparencies?
+vidWrite = false; % Write to file?
+showVids = false; % Show video content within the scene, or just the keyframe.
 
 fps = 30; % Frames per second. Low for testing stuff, high for render.
 startTime = 0; % Zero means full scene. Raise it if I want to only see later stuff.
@@ -23,22 +23,22 @@ fig.Color = [1,1,1];
 fig.Position = [100,100,1920*3/4,1080*3/4];
 
 %% Read video elements
-vr = VideoReader('media1.mov');
+vr = VideoReader('../media/media1.mov');
 initVidTime = 109; % time to begin the clip
 vr.CurrentTime = initVidTime;
 vidFr = readFrame(vr);
-imwrite(vidFr,'gameframe.png','PNG'); % First frame will be the default for the surface.
+imwrite(vidFr,'../media/gameframe.png','PNG'); % First frame will be the default for the surface.
 
 %% Add surfaces
 % Import images, skin them to surfaces.
-[keySurf,keySurfTrans] = setUpImage('full_keyboard.png',0.2,false);
-[QSurf,QSurfTrans] = setUpImage('Q.png',0.2,true);
-[WSurf,WSurfTrans] = setUpImage('W.png',0.2,true);
-[OSurf,OSurfTrans] = setUpImage('O.png',0.2,true);
-[PSurf,PSurfTrans] = setUpImage('P.png',0.2,true);
+[keySurf,keySurfTrans] = setUpImage('../media/full_keyboard.png',0.2,false);
+[QSurf,QSurfTrans] = setUpImage('../media/Q.png',0.2,true);
+[WSurf,WSurfTrans] = setUpImage('../media/W.png',0.2,true);
+[OSurf,OSurfTrans] = setUpImage('../media/O.png',0.2,true);
+[PSurf,PSurfTrans] = setUpImage('../media/P.png',0.2,true);
 
 %[BSurf,BSurfTrans] = setUpImage('browser.png',1);
-[BSurf,BSurfTrans] = setUpImage('gameFrame.png',2,false);
+[BSurf,BSurfTrans] = setUpImage('../media/gameFrame.png',2,false);
 
 allSurfs = {keySurf,QSurf,WSurf,OSurf,PSurf,BSurf};
 
